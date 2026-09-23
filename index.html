@@ -56,7 +56,7 @@
       gap: 10px;
       font-size: 1.3rem;
       font-weight: 700;
-      color: #c8161d;
+      color: #074b98;
     }
 
     .logo-icon {
@@ -77,6 +77,9 @@
       object-fit: contain;
       background: #fff;
     }
+
+    /* 品牌字样：直接使用 logo 原图裁出的字形，保证字体/颜色与 logo 一致 */
+    .logo-word { height: 22px; width: auto; display: block; flex: 0 0 auto; }
 
     .nav-right {
       display: flex;
@@ -1100,7 +1103,7 @@
     <div class="nav-inner">
       <a href="#" class="logo">
         <div class="logo-icon"><img src="images/logo.jpg" alt="Druomu Logo" onerror="this.remove()"></div>
-        Druomu
+        <img class="logo-word" src="images/logo-text.png" alt="Druomu">
       </a>
       <div class="nav-right">
         <ul class="nav-links">
@@ -1629,7 +1632,7 @@
         <div class="footer-brand">
           <div class="logo">
             <div class="logo-icon"><img src="images/logo.jpg" alt="Druomu Logo" onerror="this.remove()"></div>
-            Druomu
+            <img class="logo-word" src="images/logo-text-white.png" alt="Druomu">
           </div>
           <p data-i18n="footer_brand">Professional non-standard packaging equipment manufacturer. Business covers pharmaceutical, food, daily chemical, and lab industries worldwide.</p>
         </div>
