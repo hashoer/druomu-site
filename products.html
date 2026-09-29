@@ -328,7 +328,7 @@
     window.applyLang = pApplyLang;
 
     function pOnLangChange(code) {
-      var p = location.pathname.replace(/^\/(en\/)?/, '');
+      var p = location.pathname.replace(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//, '');
       window.location.href = (code === 'en' ? '/' : ('/' + code + '/')) + p;
     }
 
