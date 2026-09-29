@@ -3216,6 +3216,7 @@
 
     function onLangChange(code) {
       var p = location.pathname.replace(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//, '');
+      try { localStorage.setItem('druomu_lang', code); localStorage.setItem('druomu_lang_manual', '1'); } catch (e) {}
       window.location.href = (code === 'en' ? '/' : ('/' + code + '/')) + p;
     }
 
@@ -3253,7 +3254,7 @@
       buildLangSelect();
       buildLangMenu();
       bindVideoPrefetch();
-      applyLang('en');
+      var _pm = location.pathname.match(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//); applyLang(_pm ? _pm[1] : 'en');
       /* autoDetect disabled: static lang page */
       /* 产品页询盘预填：products.html 弹窗里点询盘后跳回主页 */
       try {

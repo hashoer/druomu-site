@@ -346,6 +346,7 @@
 
     function pOnLangChange(code) {
       var p = location.pathname.replace(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//, '');
+      try { localStorage.setItem('druomu_lang', code); localStorage.setItem('druomu_lang_manual', '1'); } catch (e) {}
       window.location.href = (code === 'en' ? '/' : ('/' + code + '/')) + p;
     }
 
@@ -431,7 +432,7 @@
 
     pBuildLangSelect();
     buildLangMenu();
-    pApplyLang('en');
+    var _pm = location.pathname.match(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//); if (_pm) { pApplyLang(_pm[1]); } else { pApplyLang(pInitialLang()); }
     /* pAutoDetect disabled: static lang page */
   </script>
 
