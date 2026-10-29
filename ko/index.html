@@ -1105,6 +1105,23 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <link rel="alternate" hreflang="zh" href="https://druomu.com/zh/">
   <link rel="alternate" hreflang="ja" href="https://druomu.com/ja/">
   <link rel="alternate" hreflang="ko" href="https://druomu.com/ko/">
@@ -3215,9 +3232,14 @@
     }
 
     function onLangChange(code) {
-      var p = location.pathname.replace(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)\//, '');
+      var p = location.pathname.replace(/\/{2,}/g, '/');
+      p = p.replace(/^\/(en|zh|ja|ko|ru|fr|es|pt|th|vi|bn|ur|fa|ar|de|it)(\/|$)/, '/');
+      p = p.replace(/\/{2,}/g, '/');
+      if (p.charAt(0) !== '/') p = '/' + p;
+      p = p.replace(/\/index\.html$/, '/');
+      var qs = location.search || '', hs = location.hash || '';
       try { localStorage.setItem('druomu_lang', code); localStorage.setItem('druomu_lang_manual', '1'); } catch (e) {}
-      window.location.href = (code === 'en' ? '/' : ('/' + code + '/')) + p;
+      window.location.href = (code === 'en' ? '/' : ('/' + code + '/')) + p.replace(/^\//, '') + qs + hs;
     }
 
     /* 默认语言：英文。只有访客手动切换过的语言才会被记住。 */
